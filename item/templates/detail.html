@@ -9,8 +9,7 @@
         }
 
         .box {
-          width: 50%; /* Adjust the width as needed */
-          border: 1px solid #ccc; /* Optional: Add borders for visual separation */
+          width: 50%;
         }
         img{
             width: 55%;
@@ -45,6 +44,10 @@
                   <td>{{ item.price }}</td>
               </tr>
                <tr>
+                   <td>Seller</td>
+                   <td>
+                       {{ item.created_by.username }}
+                   </td>
                   <td>
                       <a href="#" class="btn btn-success" style="width: 150px; margin-top: 35px">Contact Seller </a>
                   </td>
@@ -54,5 +57,111 @@
        </center>
       </div>
     </div>
+
+    {% if related_item %}
+        <center>
+        <h1 style="font-family: 'Arial Unicode 3S'; margin-top: 3%; margin-bottom: 3%">Related Item</h1>
+    </center>
+    <style>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+        padding-bottom: 5%;
+    }
+
+    .card {
+      width: calc(25% - 10px);
+      margin: 5px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      box-sizing: border-box;
+     height: 350px;
+     position: relative;
+     overflow: visible;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+
+.card-img {
+    background-color: aliceblue;
+ height: 80%;
+ width: 100%;
+ border-radius: .5rem;
+}
+
+.card-info {
+ padding-top: 10%;
+}
+
+svg {
+ width: 20px;
+ height: 20px;
+}
+
+.card-footer {
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding-top: 10px;
+ border-top: 1px solid #ddd;
+}
+
+/*Text*/
+.text-title {
+ font-weight: 900;
+ font-size: 1.2em;
+ line-height: 1.5;
+    padding-left: 5%;
+}
+
+.text-body {
+ font-size: .9em;
+ padding-bottom: 10px;
+    padding-left: 5%;
+}
+
+/*Button*/
+.card-button {
+ border: 1px solid #252525;
+ display: flex;
+ padding: .3em;
+ cursor: pointer;
+ border-radius: 50px;
+ transition: .3s ease-in-out;
+}
+
+
+.card-button:hover {
+ border: 1px solid #ffcaa6;
+ background-color: #ffcaa6;
+}
+
+  </style>
+     <div class="card-container">
+    {% for item in related_item %}
+
+              <div class="card">
+
+                      <div class="card-img">
+                      <center>
+                          <a href="{% url 'item:detail' item.id %}">
+                          <img src="{{ item.item_img.url }}" alt="product image" style="height: 150px">
+                              </a>
+                      </center>
+                  </div>
+                  <div class="card-info">
+                    <p class="text-title">{{ item.name }} </p>
+                    <p class="text-body">{{ item.discription }}</p>
+                  </div>
+                  <div class="card-footer">
+                  <span class="text-title">${{ item.price }}</span>
+                  </div>
+
+              </div>
+
+    {% endfor %}
+     </div>
+    {% endif %}
 
 {% endblock %}

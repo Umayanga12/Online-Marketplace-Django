@@ -23,16 +23,29 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Browse</a>
       </li>
+        {% if request.user.is_authenticated %}
+             <li class="nav-item">
+        <a class="nav-link" href="#">
+            <button class="-btn btn-info">Inbox</button>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
+            <button class="-btn btn-success">Dashboard</button>
+        </a>
+      </li>
+        {% else %}
+            <li class="nav-item">
+        <a class="nav-link" href="{% url 'core:signup' %}">
             <button class="-btn btn-success">Sign Up</button>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'core:login' %}">
             <button class="-btn btn-warning">Login</button>
         </a>
       </li>
+        {% endif %}
     </ul>
   </div>
 </nav>
@@ -133,8 +146,8 @@
 }
 
 </style>
-<body>
-    <div class="footer-dark">
+
+    <div class="footer-dark" style="justify-content: end">
         <footer>
             <div class="container">
                 <div class="row">
