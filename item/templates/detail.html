@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ item.name }} {% endblock %}
+{% block content %}
+
+    <style>
+            .container {
+          display: flex;
+          justify-content: space-between; /* Adjust this property as needed */
+        }
+
+        .box {
+          width: 50%; /* Adjust the width as needed */
+          border: 1px solid #ccc; /* Optional: Add borders for visual separation */
+        }
+        img{
+            width: 55%;
+        }
+        table{
+            margin-top: 20%;
+        }
+    </style>
+    <div class="container">
+      <div class="box">
+          <img src="{{ item.item_img.url }}">
+      </div>
+      <div class="box">
+       <center>
+              <table>
+              <tr>
+                  <td>Category : </td>
+                  <td>{{ item.item_cat }}</td>
+              </tr>
+              <tr>
+                  <td>Name : </td>
+                  <td>{{ item.name }}</td>
+              </tr>
+             {% if item.discription %}
+                     <tr>
+                  <td>Discription : </td>
+                  <td>{{ item.discription }}</td>
+              </tr>
+             {% endif %}
+              <tr>
+                  <td>Price : </td>
+                  <td>{{ item.price }}</td>
+              </tr>
+               <tr>
+                  <td>
+                      <a href="#" class="btn btn-success" style="width: 150px; margin-top: 35px">Contact Seller </a>
+                  </td>
+              </tr>
+          </table>
+
+       </center>
+      </div>
+    </div>
+
+{% endblock %}
