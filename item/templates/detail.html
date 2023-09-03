@@ -43,7 +43,21 @@
                   <td>Price : </td>
                   <td>{{ item.price }}</td>
               </tr>
-               <tr>
+              {% if request.user == item.created_by %}
+
+                   <tr>
+                    <td>
+                      <a href="{% url 'item:edit' item.id %}" class="btn btn-warning" style="width: 150px; margin-top: 35px">Edit Item</a>
+                  </td>
+
+                  <td>
+                      <a href="{% url 'item:delete' item.id %}" class="btn btn-danger" style="width: 150px; margin-top: 35px; margin-left: 25px;">Delate Item</a>
+                  </td>
+              </tr>
+
+                  {% else %}
+                   <tr>
+
                    <td>Seller</td>
                    <td>
                        {{ item.created_by.username }}
@@ -52,6 +66,8 @@
                       <a href="#" class="btn btn-success" style="width: 150px; margin-top: 35px">Contact Seller </a>
                   </td>
               </tr>
+              {% endif %}
+
           </table>
 
        </center>

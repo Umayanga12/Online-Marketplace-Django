@@ -21,7 +21,7 @@
         <a class="nav-link" href="{% url 'item:new' %}">New Item <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Browse</a>
+        <a class="nav-link" href="{% url 'item:search_item' %}">Browse</a>
       </li>
         {% if request.user.is_authenticated %}
              <li class="nav-item">
@@ -30,8 +30,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url  'dashboard:index' %}">
             <button class="-btn btn-success">Dashboard</button>
+        </a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="#">
+            <button class="-btn btn-danger">Logout</button>
         </a>
       </li>
         {% else %}
