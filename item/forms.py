@@ -9,3 +9,8 @@ class NewItemForm(forms.ModelForm):
         fields = {'item_cat', 'name', 'discription', 'price', 'item_img', }
 
 
+class EditItemForm(forms.ModelForm):
+    class Meta:
+        model = items
+        fields = { 'name', 'discription', 'price', 'item_img', 'is_sold'}
+
