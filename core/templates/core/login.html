@@ -68,6 +68,15 @@ button:hover span:not(:nth-child(6)) {
         {{ form.non_field_errors }}
     {{ form.as_p }}
 
+    {% if form.error or form.non_field_errors %}
+    <div>
+        {% for field in form %}
+            {{ form.errors }}
+        {% endfor %}
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}
+
 <button>
     <span class="circle1"></span>
     <span class="circle2"></span>
