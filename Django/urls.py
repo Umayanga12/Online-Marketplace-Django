@@ -11,6 +11,10 @@ urlpatterns = [
                   # all the urls will be there which are in the item/url.py file
                   path('items/', include('item.url')),
                   # add the all the urls at the dashboard
+<<<<<<< HEAD
                   path('dashboard/', include('dashboard.urls')),
+=======
+                  path('dashboard/',include('dashboard.urls')),
+>>>>>>> origin/main
                   path('admin/', admin.site.urls),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
